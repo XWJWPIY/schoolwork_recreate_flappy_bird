@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
-project(REPLACE_WITH_YOUR_PROJECT_NAME)
+set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
+project(schoolwork_recreate_flappy_bird)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -43,12 +44,10 @@ else()
     target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic)
 endif()
 
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_definitions(${PROJECT_NAME} PRIVATE RESOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/Resources")
-else()
-    message(FATAL_ERROR "relative RESOURCE_DIR is WIP, Please use `-DCMAKE_BUILD_TYPE=Debug` build for now.")
-    # target_compile_definitions(${PROJECT_NAME} PRIVATE RESOURCE_DIR="${CMAKE_INSTALL_PREFIX}/Resources")
-endif()
+target_compile_definitions(${PROJECT_NAME} PRIVATE RESOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/Resources")
+
+# Fix PTSD_ASSETS_DIR not defined in multi-config generators (Visual Studio)
+target_compile_definitions(PTSD PRIVATE PTSD_ASSETS_DIR="${CMAKE_CURRENT_SOURCE_DIR}/PTSD/assets")
 
 target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${DEPENDENCY_INCLUDE_DIRS})
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/PTSD/include)

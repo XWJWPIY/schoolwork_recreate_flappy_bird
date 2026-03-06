@@ -5,25 +5,25 @@
 
 class App {
 public:
-    enum class State {
-        START,
-        UPDATE,
-        END,
-    };
+  enum class State {
+    START,
+    UPDATE,
+    END,
+  };
 
-    State GetCurrentState() const { return m_CurrentState; }
+  State GetCurrentState() const { return m_CurrentState; }
 
-    void Start();
+  void Start();
 
-    void Update();
+  void Update();
 
-    void End(); // NOLINT(readability-convert-member-functions-to-static)
-
-private:
-    void ValidTask();
+  void End(); // NOLINT(readability-convert-member-functions-to-static)
 
 private:
-    State m_CurrentState = State::START;
+  void ValidTask();
+
+private:
+  State m_CurrentState = State::START;
 };
 
 #endif
