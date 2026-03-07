@@ -3,6 +3,13 @@
 
 #include "pch.hpp" // IWYU pragma: export
 
+#include "AppUtil.hpp"
+#include "Bird.hpp"
+#include "Numbers.hpp"
+#include "Util/Renderer.hpp"
+
+#include <memory>
+
 class App {
 public:
   enum class State {
@@ -24,6 +31,11 @@ private:
 
 private:
   State m_CurrentState = State::START;
+  AppUtil::Phase m_Phase = AppUtil::Phase::READY;
+
+  std::shared_ptr<Bird> m_Bird;
+  std::shared_ptr<Numbers> m_Numbers;
+  Util::Renderer m_Renderer;
 };
 
 #endif

@@ -7,12 +7,44 @@
 
 void App::Start() {
   LOG_TRACE("Start");
+
+  m_Bird = std::make_shared<Bird>();
+  m_Numbers = std::make_shared<Numbers>();
+
+  m_Renderer.AddChild(m_Bird);
+  m_Renderer.AddChild(m_Numbers);
+
   m_CurrentState = State::UPDATE;
 }
 
 void App::Update() {
 
-  // TODO: do your things here and delete this line <3
+  switch (m_Phase) {
+  case AppUtil::Phase::READY:
+    // 等待玩家按下空白鍵開始遊戲
+    if (Util::Input::IsKeyDown(Util::Keycode::SPACE)) {
+      m_Phase = AppUtil::Phase::PLAYING;
+      LOG_TRACE("Game Started! Phase: PLAYING");
+    }
+    break;
+
+  case AppUtil::Phase::PLAYING:
+    // 接收玩家輸入
+    if (Util::Input::IsKeyDown(Util::Keycode::SPACE)) {
+      m_Bird->Jump();
+      m_Numbers->AddNumber();
+    }
+
+    // 遊戲進行中，小鳥才會掉落與更新
+    m_Bird->Update();
+    break;
+
+  case AppUtil::Phase::GAME_OVER:
+    // 遊戲結束，等待重新開始的邏輯 (後續實作)
+    break;
+  }
+
+  m_Renderer.Update();
 
   /*
    * Do not touch the code below as they serve the purpose for
