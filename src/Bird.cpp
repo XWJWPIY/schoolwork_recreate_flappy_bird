@@ -9,7 +9,7 @@ Bird::Bird()
                            RESOURCE_DIR "/images/bird/flippy_bird.png"),
                        5.0f // zIndex
       ) {
-  m_Transform.translation = {0, 0};
+  m_Transform.translation = {-200, 0};
   m_Transform.scale = {0.03f, 0.03f};
   SetVisible(true);
   LOG_TRACE("Bird created");

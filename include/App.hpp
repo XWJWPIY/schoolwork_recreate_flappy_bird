@@ -4,6 +4,7 @@
 #include "pch.hpp" // IWYU pragma: export
 
 #include "AppUtil.hpp"
+#include "Background.hpp"
 #include "Bird.hpp"
 #include "Numbers.hpp"
 #include "Util/Renderer.hpp"
@@ -33,6 +34,7 @@ private:
   State m_CurrentState = State::START;
   AppUtil::Phase m_Phase = AppUtil::Phase::READY;
 
+  std::shared_ptr<Background> m_Background;
   std::shared_ptr<Bird> m_Bird;
   std::shared_ptr<Numbers> m_Numbers;
   Util::Renderer m_Renderer;

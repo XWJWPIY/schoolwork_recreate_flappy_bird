@@ -2,7 +2,9 @@
 #define NUMBERS_HPP
 
 #include "Util/GameObject.hpp"
+#include "Util/Image.hpp"
 #include <memory>
+#include <vector>
 
 class Numbers : public Util::GameObject {
 public:
@@ -16,6 +18,7 @@ private:
   void UpdateDisplay();
 
   int m_Number = 0;
+  std::vector<std::shared_ptr<Util::Image>> m_DigitImages;
 };
 
 #endif

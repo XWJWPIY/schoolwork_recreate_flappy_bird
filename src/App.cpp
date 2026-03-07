@@ -10,9 +10,11 @@ void App::Start() {
 
   m_Bird = std::make_shared<Bird>();
   m_Numbers = std::make_shared<Numbers>();
+  m_Background = std::make_shared<Background>();
 
   m_Renderer.AddChild(m_Bird);
   m_Renderer.AddChild(m_Numbers);
+  m_Renderer.AddChild(m_Background);
 
   m_CurrentState = State::UPDATE;
 }
