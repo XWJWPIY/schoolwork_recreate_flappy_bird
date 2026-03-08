@@ -2,7 +2,7 @@
 #include "Util/Image.hpp"
 
 Background::Background() : Util::GameObject() {
-  m_ZIndex = -10.0f; // z-index 底層
+  m_ZIndex = 0.0f; // z-index 底層
   UpdateDisplay();
 }
 

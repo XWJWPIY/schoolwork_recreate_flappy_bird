@@ -3,6 +3,10 @@
 
 #include "pch.hpp" // IWYU pragma: export
 
+#include "Util/GameObject.hpp"
+#include <memory>
+
+
 namespace AppUtil {
 
 /*
@@ -17,5 +21,8 @@ enum class Phase {
 };
 
 } // namespace AppUtil
+
+bool CheckCollision(const std::shared_ptr<Util::GameObject> &a,
+                    const std::shared_ptr<Util::GameObject> &b);
 
 #endif // APP_UTIL_HPP

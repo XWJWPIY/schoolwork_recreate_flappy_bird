@@ -6,6 +6,7 @@
 #include "AppUtil.hpp"
 #include "Background.hpp"
 #include "Bird.hpp"
+#include "Ground.hpp"
 #include "Numbers.hpp"
 #include "Util/Renderer.hpp"
 
@@ -37,6 +38,7 @@ private:
   std::shared_ptr<Background> m_Background;
   std::shared_ptr<Bird> m_Bird;
   std::shared_ptr<Numbers> m_Numbers;
+  std::shared_ptr<Ground> m_Ground;
   Util::Renderer m_Renderer;
 };
 

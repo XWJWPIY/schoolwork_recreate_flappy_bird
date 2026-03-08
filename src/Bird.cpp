@@ -1,4 +1,5 @@
 #include "Bird.hpp"
+#include "Ground.hpp"
 
 #include "Util/Image.hpp"
 #include "Util/Logger.hpp"
@@ -38,16 +39,16 @@ void Bird::Update() {
   // 2. 位置受速度影響改變 (y = y0 + v * dt)
   m_Transform.translation.y += m_Velocity * deltaTime;
 
-  // 3. 碰到預設最低點停住
-  // (之後可以改成碰到地板碰撞框 `Ground` 才停住)
-  if (m_Transform.translation.y <= -200.0f) {
-    m_Transform.translation.y = -200.0f;
-    m_Velocity = 0.0f; // 抵達最低點，速度歸零
-  }
+  // 3. (已經沒有最低點限制，交給 App 判斷是否撞到地板)
 }
 
 void Bird::Jump() {
   m_IsJumping = true;
   m_JumpTimer = m_JumpDuration; // 重置跳躍計時器
   m_Velocity = m_JumpVelocity;  // 立即獲得向上速度
+}
+
+void Bird::StopFalling(float targetY) {
+  m_Velocity = 0.0f;
+  m_Transform.translation.y = targetY;
 }

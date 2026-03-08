@@ -13,6 +13,8 @@ public:
 
   void Jump();
 
+  void StopFalling(float targetY);
+
 private:
   float m_Velocity = 0.0f;
   float m_Gravity = -0.0015f; // 重力常數
